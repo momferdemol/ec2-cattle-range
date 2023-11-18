@@ -1,0 +1,78 @@
+[tool.poetry]
+name = "ec2-cattle-range"
+version = "0.1.0"
+description = "EC2 cattle range"
+authors = ["Momfer"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+aws-cdk-lib = "==2.96.2"
+pydantic = "^2.3.0"
+pydantic-settings = "^2.0.3"
+
+
+[tool.poetry.group.dev.dependencies]
+cdk-nag = "^2.27.130"
+pytest = "^7.4.1"
+ruff = "^0.0.287"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.pyright]
+typeCheckingMode = "strict"
+
+exclude = [
+    "**/node_modules",
+    "**/__pycache__",
+    "venv/",
+    ".venv/"
+]
+
+
+[tool.isort]
+profile = "black"
+
+
+[tool.black]
+line-length = 100
+
+
+[tool.ruff]
+# E & F - defaults
+# W     - optional warnings (for example trailing whitespace)
+# C90   - code complexity
+# ANN   - enforce strict type annotation
+# G     - should not have f-strings in logs
+select = ["E", "F", "W", "C90", "ANN", "G"]
+logger-objects = ["logger.log"] # <- Change path to logger object
+line-length = 100
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    ".venv",
+]

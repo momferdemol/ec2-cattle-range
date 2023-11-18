@@ -1,0 +1,10 @@
+{
+    "name": "ec2-cattle-range",
+    "version": "0.1.0",
+    "scripts": {
+        "cdk": "cdk"
+    },
+    "dependencies": {
+        "aws-cdk": "2.96.2"
+    }
+}
