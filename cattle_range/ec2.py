@@ -9,13 +9,6 @@ from constructs import Construct
 from cattle_range.alb import LoadBalancer
 from cattle_range.settings import get_resource_name
 
-linux_ami = ec2.AmazonLinuxImage(
-    generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
-    edition=ec2.AmazonLinuxEdition.STANDARD,
-    virtualization=ec2.AmazonLinuxVirt.HVM,
-    storage=ec2.AmazonLinuxStorage.GENERAL_PURPOSE,
-)
-
 with open("./cattle_range/user_data/user_data.sh") as file:
     user_data = file.read()
 
@@ -53,7 +46,9 @@ class Compute(Construct):
             instance_type=ec2.InstanceType("t3.micro"),
             security_group=self.sg,
             role=self.profile,  # type: ignore
-            machine_image=linux_ami,
+            machine_image=ec2.MachineImage.from_ssm_parameter(
+                parameter_name="/cattle_range/ec2/ami",
+            ),
             user_data=ec2.UserData.custom(user_data),
         )
         CfnOutput(self, "LaunchTemplateId", value=str(template.launch_template_id))

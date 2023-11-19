@@ -54,7 +54,7 @@ class LoadBalancer(Construct):
                 enabled=True,
                 port="80",
                 protocol=elbv2.Protocol.HTTP,
-                path="/index.html",
+                path="/",
                 healthy_threshold_count=2,
                 unhealthy_threshold_count=2,
             ),
