@@ -7,6 +7,7 @@
   # environment variables
   env.ENVIRONMENT="tst";
   env.AWS_ACCOUNT="783648717275";  # s-ab01-foobar-tst
+  env.AWS_REGION="eu-west-1";
   env.DEBUG="True";
   env.GREET = "---->> hello! ready to code?";
   env.VERSIONS = "---->> versions";

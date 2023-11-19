@@ -2,9 +2,10 @@
     "name": "ec2-cattle-range",
     "version": "0.1.0",
     "scripts": {
-        "cdk": "cdk"
+        "cdk": "cdk",
+        "bootstrap": "cdk bootstrap --no-app aws://$AWS_ACCOUNT/$AWS_REGION"
     },
     "dependencies": {
-        "aws-cdk": "2.96.2"
+        "aws-cdk": "2.110.0"
     }
 }
